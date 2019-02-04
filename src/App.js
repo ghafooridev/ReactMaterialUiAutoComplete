@@ -1,25 +1,68 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from "react";
+import "./App.css";
+import AutoComplete from "./autoComplete";
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [
+        {
+          id: 1,
+          name: "ali",
+          age: 18
+        },
+        {
+          id: 2,
+          name: "hasan",
+          age: 20
+        },
+        {
+          id: 3,
+          name: "javad",
+          age: 22
+        },
+        {
+          id: 4,
+          name: "mohamad",
+          age: 24
+        },
+        {
+          id: 5,
+          name: "reza",
+          age: 27
+        },
+        {
+          id: 6,
+          name: "mahdi",
+          age: 29
+        },
+        {
+          id: 7,
+          name: "hadi",
+          age: 25
+        },
+        {
+          id: 8,
+          name: "bagher",
+          age: 30
+        },
+        {
+          id: 9,
+          name: "sadegh",
+          age: 32
+        },
+        {
+          id: 10,
+          name: "hosein",
+          age: 21
+        }
+      ]
+    };
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <AutoComplete data={this.state.data} defaultValue="ali" />
       </div>
     );
   }
