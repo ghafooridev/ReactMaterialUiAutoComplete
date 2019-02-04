@@ -14,12 +14,13 @@ class AutoComplete extends Component {
     };
   }
   textChange = e => {
+    let target = this.props.target;
     let value = e.target.value;
     const { data } = this.props;
     let fetchList = [];
     this.setState({ text: value, showList: true }, () => {
       data.map(item => {
-        if (item.name.includes(value)) {
+        if (item[target].includes(value)) {
           fetchList.push(item);
         }
       });
@@ -48,7 +49,7 @@ class AutoComplete extends Component {
     } else if (e.keyCode == "13") {
       this.list.props.children.map(item => {
         if (item.props.selected) {
-         
+
           this.setState(
             {
               text: item.props.children.props.children,
@@ -86,7 +87,7 @@ class AutoComplete extends Component {
                 button
                 onClick={() => this.clickList(item)}
               >
-                <Typography>{item.name}</Typography>
+                <Typography>{item[this.props.target]}</Typography>
               </ListItem>
             ))}
           </List>

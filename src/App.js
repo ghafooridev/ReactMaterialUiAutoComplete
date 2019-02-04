@@ -69,6 +69,7 @@ class App extends Component {
           data={this.state.data}
           defaultValue="ali"
           handleSelect={this.handleSelect}
+          target='name'
         />
       </div>
     );
