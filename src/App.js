@@ -59,10 +59,17 @@ class App extends Component {
       ]
     };
   }
+  handleSelect = value => {
+    console.log("#######", value);
+  };
   render() {
     return (
       <div>
-        <AutoComplete data={this.state.data} defaultValue="ali" />
+        <AutoComplete
+          data={this.state.data}
+          defaultValue="ali"
+          handleSelect={this.handleSelect}
+        />
       </div>
     );
   }

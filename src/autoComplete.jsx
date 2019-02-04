@@ -28,6 +28,7 @@ class AutoComplete extends Component {
   };
   clickList = item => {
     this.setState({ text: item.name, showList: false });
+    this.props.handleSelect(item);
   };
   textKeyDown = e => {
     if (e.keyCode == "38") {
@@ -46,11 +47,19 @@ class AutoComplete extends Component {
       });
     } else if (e.keyCode == "13") {
       this.list.props.children.map(item => {
-        if (item.props.selected)
-          this.setState({
-            text: item.props.children.props.children,
-            showList: false
-          });
+        if (item.props.selected) {
+         
+          this.setState(
+            {
+              text: item.props.children.props.children,
+              selectedItem: item.props.item,
+              showList: false
+            },
+            () => {
+              this.props.handleSelect(this.state.selectedItem);
+            }
+          );
+        }
       });
     }
   };
@@ -73,6 +82,7 @@ class AutoComplete extends Component {
                 selected={this.state.listIndex === index}
                 key={index}
                 id={item.id}
+                item={item}
                 button
                 onClick={() => this.clickList(item)}
               >
